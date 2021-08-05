@@ -1,0 +1,5 @@
+#!/bin/sh
+
+echo "disable"
+GIT_DIR=`git rev-parse --git-dir`
+rm ${GIT_DIR}/hooks/pre-push

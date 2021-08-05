@@ -1,0 +1,15 @@
+#!/bin/sh
+
+GIT_DIR=`git rev-parse --git-dir`
+if [[ $1 = "enable" ]]; then
+	printf "#!/bin/sh\n${GIT_DIR}/../bin/script" > ${GIT_DIR}/hooks/pre-push
+	chmod +x ${GIT_DIR}/hooks/pre-push
+	echo "enabled transifex auto-push"
+elif [[ $1 = "disable" ]]; then
+	rm ${GIT_DIR}/hooks/pre-push
+	echo "disabled transifex auto-push"
+else
+	echo "invalid option: $1"
+	exit 1
+fi
+exit 0
