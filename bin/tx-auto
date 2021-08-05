@@ -2,7 +2,7 @@
 
 GIT_DIR=`git rev-parse --git-dir`
 if [[ $1 = "enable" ]]; then
-	printf "#!/bin/sh\nif [[ \`git branch --show-current\` = "current" ]]; then\n	${GIT_DIR}/../bin/script\nfi\nexit 0\n" > ${GIT_DIR}/hooks/pre-push
+	printf "#!/bin/sh\nif [[ \`git branch --show-current\` = \"main\" ]]; then\n	${GIT_DIR}/../bin/script\nfi\nexit 0\n" > ${GIT_DIR}/hooks/pre-push
 	chmod +x ${GIT_DIR}/hooks/pre-push
 	echo "enabled transifex auto-push"
 elif [[ $1 = "disable" ]]; then
